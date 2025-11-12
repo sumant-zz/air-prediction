@@ -1,5 +1,5 @@
 # air-prediction
-# Air Quality Prediction Dashboard  
+[# Air Quality Prediction Dashboard  
 **Real-time Pollution Forecasting using LSTM-RNN + Interactive Web App**
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io)  
@@ -36,4 +36,4 @@ This is an **end-to-end AI-powered Air Quality Monitoring & Prediction System** 
 
 ---
 
-### Project Structure
+### Project Structure](https://github.com/sumant-zz)
