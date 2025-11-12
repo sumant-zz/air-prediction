@@ -1,39 +1,33 @@
-# air-prediction
-[# Air Quality Prediction Dashboard  
-**Real-time Pollution Forecasting using LSTM-RNN + Interactive Web App**
+<pre>flowchart TD
+    A([Start]) --> B[Load Air Quality Data<br>for 4 Cities]
+    B --> C[Preprocess Data<br>(Fill Missing, Scale Values)]
+    C --> D[Split into Train/Test Sets]
+    D --> E[Train Model for Each City<br>(LSTM / Random Forest)]
+    E --> F[Evaluate Performance<br>on Test Set]
+    F --> G{R² > 0.9 ?}
+    G -->|Yes| M[Save Model<br>model_city.pkl]
+    G -->|No| N[No Alert]
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io)  
-![Python](https://img.shields.io/badge/Python-3.9%2B-blue)  
-![TensorFlow](https://img.shields.io/badge/TensorFlow-2.10%2B-orange)  
-![Streamlit](https://img.shields.io/badge/Streamlit-1.28%2B-red)  
-![License](https://img.shields.io/badge/License-MIT-green)
+    M --> O[Predict Next 4 Months<br>Iterative Forecasting]
+    N --> O
 
-**Live Demo**: [https://your-username-air-quality.streamlit.app](https://your-username-air-quality.streamlit.app) *(deploy after GitHub)*
+    O --> P[Save to .pkl Files<br>→ model_City.pkl<br>→ predictions.pkl<br>→ scaler.pkl]
+    P --> Q{All 4 Cities Done?}
+    Q -->|No| E
+    Q -->|Yes| R[Generate .pkl Files<br>6 Files Created]
 
----
+    R --> S[Launch Streamlit App<br><code>streamlit run app.py</code>]
+    S --> T[Load All .pkl Files<br><code>joblib.load()</code>]
+    T --> U[Display Dashboard<br>→ 4 City Risk Cards<br>→ 4-Month Charts<br>→ Interactive Slider]
+    U --> V[User Selects City + Months<br>e.g., Delhi + 12 Months]
+    V --> W[Predict Future Months<br>Using Saved Model + Last Sequence]
+    W --> X[Show Graph + Table + Alert<br>Red if >80]
+    X --> Y([End: Live AI Dashboard Running])
 
-### Project Overview
-This is an **end-to-end AI-powered Air Quality Monitoring & Prediction System** that:
-- Analyzes historical air pollution data (`CO`, `SO2`, `NOx`, `O3`, AQI)
-- Uses **LSTM Deep Learning** (Recurrent Neural Network) to predict future pollution
-- Sends **SMS alerts** via Twilio when pollution crosses safe limits
-- Visualizes trends (Yearly, Monthly, Weekly, Hourly) for **Mumbai, Delhi, Kolkata, Chennai**
-- Deploys a **beautiful interactive web dashboard** using **Streamlit**
-
----
-
-### Features
-| Feature | Description |
-|-------|-----------|
-| **Multi-City Forecasting** | Predicts for 4 major Indian cities |
-| **Next-Year Average Prediction** | Forecasts annual average pollution |
-| **Next 4–24 Months Forecast** | Interactive slider for custom future predictions |
-| **Color-Coded Risk Alerts** | Green / Orange / Red based on pollution level |
-| **Auto SMS Alert System** | Sends Twilio SMS if pollution > 80 |
-| **Trend Analysis Plots** | Yearly, Monthly, Weekly, Hourly visualizations |
-| **No Retraining Needed** | Uses saved `.pkl` models (fast loading) |
-| **100% Local & Deployable** | Works offline + free online deployment |
-
----
-
-### Project Structure](https://github.com/sumant-zz)
+    %% Styling
+    style A fill:#2ecc71,stroke:#27ae60,color:white
+    style Y fill:#e74c3c,stroke:#c0392b,color:white
+    style M fill:#e67e22,stroke:#d35400,color:white
+    style S fill:#3498db,stroke:#2980b9,color:white
+    style U fill:#9b59b6,stroke:#8e44ad,color:white
+</pre>
